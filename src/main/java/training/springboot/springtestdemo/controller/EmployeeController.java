@@ -40,7 +40,8 @@ public class EmployeeController {
 
     @GetMapping("{id}")
     public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable("id") long id) {
-        return new ResponseEntity<Optional<Employee>>(IEmployeeService.getEmployeeById(id), HttpStatus.OK);
+        return new ResponseEntity<Optional<Employee>>
+                (IEmployeeService.getEmployeeById(id), HttpStatus.OK);
     }
 
     @PutMapping("{id}")

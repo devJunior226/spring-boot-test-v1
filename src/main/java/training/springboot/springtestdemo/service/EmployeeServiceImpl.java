@@ -18,7 +18,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public Employee saveEmployee(Employee employee) {
-
         Optional<Employee> savedEmployee = employeeRepository.findByEmail(employee.getEmail());
         if (savedEmployee.isPresent()) {
             throw new RuntimeException("Employee already exist with given email:" + employee.getEmail());
@@ -41,7 +40,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
         Employee existingEmployee = employeeRepository.findById(id).orElseThrow(
                 () -> new RuntimeException()
         );
-
         existingEmployee.setFirstName(employee.getFirstName());
         existingEmployee.setLastName(employee.getLastName());
         existingEmployee.setEmail(employee.getEmail());
@@ -54,4 +52,5 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public void deleteEmployee(long id) {
         employeeRepository.deleteById(id);
     }
+
 }
